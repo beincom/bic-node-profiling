@@ -1,1 +1,1 @@
-export * from './trace-service.interface';
+export * from './profiling-module.interface';

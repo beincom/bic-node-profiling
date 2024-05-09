@@ -1,0 +1,14 @@
+log-level: debug
+storage:
+  type: filesystem
+  path: /var/lib/pyroscope
+scrape-configs:
+  - job-name: testing            # any name
+    enabled-profiles: [cpu, mem] # cpu and mem for cpu and heap
+    static-configs:
+      - application: rideshare
+        spy-name: nodespy        # make pyroscope know it's node profiles
+        targets:
+          - localhost:3001       # address of your scrape target
+        labels:
+          env: dev               # labels

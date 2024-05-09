@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  pyroscope:
+    image: grafana/pyroscope:latest
+    ports:
+      - "4040:4040"
+    environment:
+      - PYROSCOPE_SERVER_TYPE=pyroscope
+      - PYROSCOPE_STORAGE_TYPE=filesystem
+      - PYROSCOPE_LOG_LEVEL=debug
+      - PYROSCOPE_LISTEN_ADDR=0.0.0.0:4040
+      - PYROSCOPE_STORAGE_PATH=/var/lib/pyroscope
+      - PYROSCOPE_MODE=pull
+    volumes:
+      - pyroscope-data:/var/lib/pyroscope
+      - ./pyroscope-config.yaml:/etc/pyroscope/pyroscope-config.yaml
+
+volumes:
+  pyroscope-data:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: './pyroscope-data'

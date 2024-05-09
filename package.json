@@ -1,38 +1,29 @@
 {
-  "name": "@beincom/otel-tracing",
-  "version": "0.0.17",
-  "description": "",
+  "name": "@beincom/node-profile",
+  "version": "1.0.1",
+  "description": "```   npm install @beincom/node-profile   # yarn add @beincom/node-profile   ```",
   "main": "dist/index.js",
   "author": "Quoc Viet <hoangquocviet@evol.vn>",
   "license": "MIT",
   "private": false,
   "keywords": [
     "nestjs",
-    "opentelemetry",
-    "nestjs-cls"
+    "pyroscope",
+    "grafana",
+    "profiling"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/beincom/bic-otel-tracing.git"
+    "url": "git+https://github.com/beincom/bic-node-profiling.git"
   },
   "scripts": {
     "build": "rm -fr ./dist && tsc -p tsconfig.build.json"
   },
   "dependencies": {
-    "@beincom/otel-tracing": "^0.0.9",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
-    "@opentelemetry/api": "^1.8.0",
-    "@opentelemetry/auto-instrumentations-node": "^0.44.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.50.0",
-    "@opentelemetry/otlp-exporter-base": "^0.50.0",
-    "@opentelemetry/resource-detector-container": "^0.3.8",
-    "@opentelemetry/resources": "^1.23.0",
-    "@opentelemetry/sdk-node": "^0.50.0",
-    "kafkajs": "^2.2.4",
-    "nestjs-cls": "^4.3.0",
-    "opentelemetry-instrumentation-kafkajs": "^0.40.0",
+    "@pyroscope/nodejs": "0.2.9",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
@@ -58,5 +49,13 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.1.3"
+  },
+  "types": "./dist/index.d.ts",
+  "bugs": {
+    "url": "https://github.com/beincom/bic-node-profiling/issues"
+  },
+  "homepage": "https://github.com/beincom/bic-node-profiling#readme",
+  "directories": {
+    "test": "test"
   }
 }
