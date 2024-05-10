@@ -1,6 +1,6 @@
 {
   "name": "@beincom/node-profile",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "description": "```   npm install @beincom/node-profile   # yarn add @beincom/node-profile   ```",
   "main": "dist/index.js",
   "author": "Quoc Viet <hoangquocviet@evol.vn>",
@@ -23,7 +23,7 @@
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
-    "@pyroscope/nodejs": "0.2.9",
+    "@pyroscope/nodejs": "^0.3.7",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
   },
