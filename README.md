@@ -16,6 +16,7 @@
             const profileConfig: ProfileConfig = {
               applicationName: process.env.APP_NAME,
               serverAddress: process.env.SERVER_ADDRESS,
+              enabled: process.env.ENABLED === 'true',
             };
 
             return new ProfileService(profileConfig);

@@ -5,4 +5,5 @@ export type ProfileConfig = {
   samplingInterval?: number;
   sampleDuration?: number;
   tags?: Record<string, any>;
+  enabled?: boolean;
 };

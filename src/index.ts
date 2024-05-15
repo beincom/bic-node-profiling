@@ -1,3 +1,5 @@
+export * from './middleware';
+
 export * from './decorators';
 export * from './interfaces';
 export * from './profiling.service';
