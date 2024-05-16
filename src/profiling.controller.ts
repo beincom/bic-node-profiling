@@ -3,9 +3,9 @@ import { Request, Response } from 'express';
 
 import { collectHeap, collectWall } from './handlers';
 
-@Controller()
+@Controller('debug')
 export class ProfilingController {
-  @Get('/debug/pprof/heap')
+  @Get('/pprof/allocs')
   public async getHeap(
     @Req() req: Request,
     @Res() res: Response,
@@ -20,7 +20,7 @@ export class ProfilingController {
     }
   }
 
-  @Get('/debug/pprof/profile')
+  @Get('/pprof/profile')
   public async getProfile(
     @Req() req: Request,
     @Res() res: Response,

@@ -1,6 +1,6 @@
 {
   "name": "@beincom/node-profile",
-  "version": "2.7.5",
+  "version": "3.0.1",
   "description": "```   npm install @beincom/node-profile   # yarn add @beincom/node-profile   ```",
   "main": "dist/index.js",
   "author": "Quoc Viet <hoangquocviet@evol.vn>",

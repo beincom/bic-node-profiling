@@ -6,14 +6,11 @@ import {
 } from './interfaces/profiling-module.interface';
 
 import { ProfileConfig } from './type';
-import { ProfilingController } from './profiling.controller';
 
 import { PROFILE_SERVICE_TOKEN, ProfileService } from './profiling.service';
 
 @Global()
-@Module({
-  controllers: [ProfilingController],
-})
+@Module({})
 export class ProfileModule {
   public static forRoot(config: ProfileConfig): DynamicModule {
     return {

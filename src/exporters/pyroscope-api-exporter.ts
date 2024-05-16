@@ -4,7 +4,7 @@ import { URL } from 'node:url';
 import { encode } from '@datadog/pprof';
 import axios, { AxiosBasicCredentials, AxiosError } from 'axios';
 
-import { default as FormData, Headers } from 'form-data';
+import FormData, { Headers } from 'form-data';
 import { Profile } from 'pprof-format';
 
 import { ProfileExport, ProfileExporter } from './profile-exporter';

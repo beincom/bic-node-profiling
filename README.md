@@ -13,13 +13,31 @@
       imports: [
         ProfileModule.forRootAsync({
           useFactory: (configService: ConfigService) => {
-            const profileConfig: ProfileConfig = {
-              applicationName: process.env.APP_NAME,
-              serverAddress: process.env.SERVER_ADDRESS,
-              enabled: process.env.ENABLED === 'true',
+            const labels: Record<string, string | number> = {
+              pod: process.env.pod,
+              version: process.env.version,
             };
 
-            return new ProfileService(profileConfig);
+            const tags: Record<string, string> = {};
+
+            const profileConfig: ProfileConfig = {
+              serverAddress: pyroscope.serverAddress,
+              applicationName: process.env.APP_NAME,
+              tags: tags,
+              heap: {
+                samplingIntervalBytes: Number(process.env.HEAP_INTERVAL_BYTES), // 512 * 1024
+                stackDepth: Number(process.env.HEAD_STACK_DEPTH), // Maximum is 64
+              },
+              wall: {
+                samplingDurationMs: Number(process.env.WALL_DURATION), // 10 * 1000
+                samplingIntervalMicros: Number(process.env.WALL_INTERVAL), // 10 * 1000 * 1000
+              },
+            };
+
+            const profileService = new ProfileService(profileConfig);
+            profileService.setWallLabels(labels);
+            profileService.start();
+            return profileService;
           },
           inject: [ConfigService],
         }),

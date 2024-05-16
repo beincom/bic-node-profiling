@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 
 import {
   checkPyroscopeConfig,
@@ -16,15 +16,16 @@ import { ProfileConfig } from './type';
 export const PROFILE_SERVICE_TOKEN = Symbol('PROFILE_SERVICE_TOKEN');
 
 @Injectable()
-export class ProfileService implements OnModuleInit {
-  constructor(public readonly configs: ProfileConfig) {}
-
-  public onModuleInit() {
+export class ProfileService {
+  constructor(public readonly configs: ProfileConfig) {
     this.init({
       authToken: this.configs.authToken,
       appName: this.configs.applicationName,
+      flushIntervalMs: this.configs.flushIntervalMs,
+      heap: this.configs.heap,
       serverAddress: this.configs.serverAddress,
       tags: this.configs.tags,
+      wall: this.configs.wall,
     });
   }
 
@@ -35,11 +36,11 @@ export class ProfileService implements OnModuleInit {
     setProfiler(new PyroscopeProfiler(processedConfig));
   }
 
-  private getWallLabels(): Record<string, number | string> {
+  public getWallLabels(): Record<string, number | string> {
     return getProfiler().wallProfiler.profiler.getLabels();
   }
 
-  private setWallLabels(labels: Record<string, number | string>): void {
+  public setWallLabels(labels: Record<string, number | string>): void {
     getProfiler().wallProfiler.profiler.setLabels(labels);
   }
 
@@ -72,7 +73,6 @@ export class ProfileService implements OnModuleInit {
   public start(): void {
     this.startWallProfiling();
     this.startHeapProfiling();
-    this.startCpuProfiling();
   }
 
   public async stop(): Promise<void> {
